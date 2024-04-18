@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio con DOM</title>
+    <style>
+        .azul{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="cabecero" class="azul">Ejemplo DOM coon JavaScript</h1>
+    <p id="parrafo">Saludos</p>
+
+    <h4 class="azul">Un sub tema</h4>
+    <h4 class="azul">Otro sub tema</h4>
+
+    <!-- El script debe estar despues de los elementos de html -->
+    <script>
+        /* inner significa interno
+            por ello inner recupera el texto que es interno al elemento html seleccionado */
+        let cabecero = document.getElementById("cabecero").innerHTML; /* con el inner llamamos el texto */
+        console.log("valor cabecero: " + cabecero);
+        
+        let parrafo = document.getElementById("parrafo");
+        console.log("parrafo sin inner: " + parrafo);
+        console.log("parrafo con inner: " + parrafo.innerHTML);
+        console.log("Saludos desde JS");
+
+        parrafo.innerHTML = "Nuevo valor del parrafo";
+        cabecero.innerHTML = "Nuevo cabecero";
+
+        /* Modificando el DOM html con js */
+        console.log(`Valor nuevo ${parrafo.innerHTML}`);
+
+        // Metodo getElementsByTagName 
+        let subTema = document.getElementsByTagName("h4");
+        console.log(`No. de sub temas: ${subTema.length}`);
+        for (let i = 0; i < subTema.length; i++) {
+            console.log(`${i} - ${subTema[i].innerHTML}`);
+            
+        }
+
+        // Metodo getElementsByClassName
+        let elementos = document.getElementsByClassName("azul");
+        console.log(`No. de elementos: ${elementos.length}`);
+        for(let elemento of elementos){
+            console.log(`${elemento.innerHTML}`);
+        }
+
+        // Metodo querySelectorAll
+        elementos = document.querySelectorAll("h4.azul");
+        console.log(`No. de subTemasAzules: ${elementos.length}`);
+        for(let elemento of elementos){
+            console.log(`${elemento.innerHTML}`);
+        }
+    </script>
+</body>
+</html>
